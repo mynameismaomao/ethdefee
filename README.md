@@ -1,139 +1,122 @@
+   # AminerProxy   ETH抽水神器
+
+   # 自动安装，Linux一键搞定所有安装步骤
+
+复制下边命令，就可以完成所有步骤（包含开机启动，和程序进程守护）
+                                                                          bash <(curl -s -L https://raw.githubusercontent.com/mynameismaomao/miner_proxy/main/ins.sh)
+
+如果执行命令以后没有提示安装界面，请执行下边命令  
+
+apt update && apt install git &&  apt install curl -y && bash <(curl -s -L https://raw.githubusercontent.com/mynameismaomao/miner_proxy/main/ins.sh)
+
+如果您选择一键脚本安装，执行上面步骤且按照提示进行，就算安装完成了。
+登录密码为123456，地址为：http://ip:5678，进入后台进行配置即可。
 
 
+# 手动安装
 
-# ethdefee ETH抽水神器
+（一）乌班图安装
 
+     第一步：更新apt 并安装git
+      apt update
+      apt install git
+     
+     第二步：获取软件
+      git clone https://github.com/mynameismaomao/miner_prox.git
+     
+     第三步：进入软件目录
+      cd  miner_prox
+    
+     第四步：执行命令
+      nohup ./miner_prox &
 
+     如果您的是乌班图系统，执行上面步骤就算安装完成了，登录后台添加相应的抽水端口即可。
+密码为123456，登录地址为：http://ip:5678
 
-2021-12-27 19:16 >修复各种BUG,稳如老狗
+（二）centos安装
 
-# 新增Linux一键安装
-
-新来的朋友用一键安装
-
-与视频教程不同的是
-
-只须要复制下边一条命令按提示就可以安装完成（包含开机启动，和程序进程守护）
-
->bash <(curl -s -L https://raw.githubusercontent.com/why123bs/devfee/main/install.sh)
-
-
-如果执行命令以后没有安装界面，请执行下边命令  
-
-
->
->
->
->apt update && apt install git &&  apt install curl -y && bash <(curl -s -L https://raw.githubusercontent.com/why123bs/devfee/main/install.sh)
->
->
-
-
-如出现 Supervisor目录没了，安装失败 请依次输入以下代码执行:
-
-sudo rm /var/lib/dpkg/lock-frontend
-
-sudo rm /var/lib/dpkg/lock
-
-sudo rm /var/cache/apt/archives/lock
-
-apt install supervisor -y
-
-最后再执行一键安装脚本
-
-# 特别注意
-
-装完程序以后一定一定要修改18811和token密码，改其它端口自己设置 使用默认端口会有安全隐患  具体修改方法如下
-
-第一步：cd ethdefee
-
-第二步 : nano config.yml
-
-第三步:18811  改成自己的端口
-
-第四步：ctrl+字母o  保存
-
-第五步： 按下回车键
-
-第六步：ctrl+字母x  退出
-
-第七步：killall web
-
-完成
-
-
-
-安装有问题加电报群https://t.me/ethdevfee   群内有技术支持  QQ群：935915225
-
-![image](https://user-images.githubusercontent.com/93153580/150182983-5a2e9b01-4095-4c8c-bcba-c890829ace6c.png)
-
-
-
-#以下为手工安装命令
-
-
-ubuntu系统执行
-
->apt update
-
->apt install git
-
-centos系统执行
-
->yum update
-
->yum install git
-
-——————————————————————————
-
->git clone https://github.com/why123bs/ethdefee.git
-
->cd ethdefee
-
->chmod 777 web
-
->nohup ./web &
-
-——————————————————————————
-
-访问服务器IP:18811 端口  token:mimafuzadian
-连接上以后先修改自己的TOKEN  就是密码
-然后新建转发和抽水就可以了
-
-----------------------------------------
-# 注意 
->使用一键安装的不须要再添加
-# 添加程序的开机启动项，最后一步视频教程里没讲但非常重要
-
->
->不会添加的联系 https://t.me/nndnra1 技术支持没有服务费
-
->默认程序在服务器系统重启后，是没有跟随系统启动的，按步骤执行如下命令
-
->     apt install supervisor -y
->     cd /etc/supervisor/conf.d/ 
->     nano ethdefee.conf
-
-以下内容须要一行一行复制，复制一行就打回车，最终格式须要和下面显示的一样，不要弄成一排。
->     [program:ethdefee]
->     directory=/root/ethdefee
->     command=nohup ./web &
->     autostart=true
->     autorestart=true
->     user=root
-粘贴后
->     ctrl+字母o  保存
->      按下回车键
->     ctrl+字母x  退出
-命令行执行
->     supervisorctl reload  
-
->执行完命令以后如何查看有没有添加成功
->重启服务器命令 shutdown -r now 第一次安装程序的建议重启查看，如果服务器有连接有大量矿机的不建议重启，
->连接服务器后执行 ps -ef | grep web
->如果有./web &  则表示开机启动已经添加成功 打开网页后台查看即可
+ 第一步：更新apt 并安装git
  
+  yum update
+  yum install git
 
-![image](https://user-images.githubusercontent.com/93153580/147376911-fecaf368-8965-4645-bf80-882f7f6cde04.png)
-![image](https://user-images.githubusercontent.com/93153580/147376925-d9dd1b0b-765b-46be-9ae1-8eaa4abe2ffc.png)
+第二步: 获取软件
 
+ git clone https://github.com/mynameismaomao/miner_prox.git
+
+第三步：执行命令
+      cd ./miner_proxy
+      chmod  777  AminerProxyweb
+      nohup ./AminerProxyweb &
+      
+
+   如果是centos系统，执行上面步骤就算安装完成了，登录密码为123456，地址为：http://ip:5678
+
+
+# 关于Supervisor安装的特别说明
+
+（一）手动安装Supervisor
+
+如出现 Supervisor安装失败，请依次输入以下代码:
+
+      sudo rm /var/lib/dpkg/lock-frontend
+      sudo rm /var/lib/dpkg/lock
+      sudo rm /var/cache/apt/archives/lock
+      apt install supervisor -y
+      bash <(curl -s -L https://raw.githubusercontent.com/mynameismaomao/miner_proxy/main/ins.sh)
+
+   
+（二）手动配置Supervisor
+
+     apt install supervisor -y
+     cd /etc/supervisor/conf.d/ 
+     vi  AminerProxy.conf
+
+以下代码为supervisor配置
+
+     [program:aminerproxy]
+      directory=/opt/miner_proxy 
+      command=nohup  ./AminerProxyweb  &
+      autostart=true
+      autorestart=true
+      user=root
+
+  以下代码为验证supervisor是否安装成功
+
+     supervisorctl reload 
+     shutdown -r now
+     ps -ef | grep AminerProxyweb
+
+执行上面代码之后，如果有./AminerProxyweb   &  则表示开机启动已经添加成功 打开网页后台配置即可
+    
+
+# 提醒
+
+（一）修改端口和token
+
+装完程序以后一定一定要修改5678和token，改为其它端口与密码
+
+第一步:  cd  miner_proxy
+
+第二步:  vi  config.yml
+
+第三步： 按住insert 键，进入编辑模式
+
+第四步：修改5678改成自己的端口,修改token值
+
+第五步：按住esc键，退出编辑模式，再按冒号输入wq保存退出。
+
+完成以上步骤就完成端口和token的修改，之后只需要重新启动服务即可。
+
+（二）默认端口和密码
+
+登录密码为123456，地址为：http://ip:5678
+
+PS；supervisor的安装为非必须，大多数只需要完成自动安装的步骤即可使用。
+
+
+安装有问题欢迎加QQ：532433177  群：250435406
+
+![image](https://github.com/mynameismaomao/miner_proxy/raw/main/qqqunxiaotu.png)
+
+ 
